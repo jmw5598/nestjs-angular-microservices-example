@@ -7,7 +7,7 @@ import { AuthService } from './auth.service';
 export class AuthController {
   constructor(
     private readonly _authService: AuthService
-  ) {}
+  ) { }
 
   @MessagePattern('')
   public async getAuth(): Promise<any> {

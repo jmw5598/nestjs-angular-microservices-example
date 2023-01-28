@@ -1,5 +1,7 @@
 import { DynamicModule, Module } from '@nestjs/common';
+
 import { EnvironmentService } from './services/environment.service';
+import { TypeOrmConfigService } from './services/type-orm-config.service';
 
 @Module({
   providers: [],
@@ -10,10 +12,12 @@ export class CoreModule {
     return {
       module: CoreModule,
       providers: [
-        EnvironmentService
+        EnvironmentService,
+        TypeOrmConfigService
       ],
       exports: [
-        EnvironmentService
+        EnvironmentService,
+        TypeOrmConfigService
       ]
     } as DynamicModule
   }

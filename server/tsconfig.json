@@ -18,16 +18,16 @@
     "forceConsistentCasingInFileNames": true,
     "noFallthroughCasesInSwitch": true,
     "paths": {
-      "@vps/core": [
+      "@vsp/core": [
         "libs/core/src"
       ],
-      "@vps/core/*": [
+      "@vsp/core/*": [
         "libs/core/src/*"
       ],
-      "@vps/env": [
+      "@vsp/env": [
         "environments"
       ],
-      "@vps/env/*": [
+      "@vsp/env/*": [
         "environments/*"
       ],
       "@vsp/common": [

@@ -1,8 +1,8 @@
 import { NestFactory } from '@nestjs/core';
 import { DocumentBuilder, SwaggerModule } from '@nestjs/swagger';
 
-import { loadEnvironmentVariables } from '@vps/env';
-import { EnvironmentService } from '@vps/core';
+import { loadEnvironmentVariables } from '@vsp/env';
+import { EnvironmentService } from '@vsp/core';
 
 import { GatewayModule } from './gateway.module';
 

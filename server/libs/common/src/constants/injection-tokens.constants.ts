@@ -1,0 +1,2 @@
+export const ACCOUNTS_SERVICE_TOKEN: string = 'ACCOUNTS_SERVICE_TOKEN';
+export const AUTH_SERVICE_TOKEN: string = 'AUTH_SERVICE_TOKEN'; 

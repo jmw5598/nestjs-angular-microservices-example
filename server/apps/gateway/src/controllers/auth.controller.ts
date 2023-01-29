@@ -1,11 +1,12 @@
 import { BadRequestException, Controller, Get, Inject } from '@nestjs/common';
 import { ClientProxy } from '@nestjs/microservices';
-import { InjectionTokens } from '@vps/core';
+
+import { AUTH_SERVICE_TOKEN } from '@vsp/common';
 
 @Controller('auth')
 export class AuthController {
   constructor(
-    @Inject(InjectionTokens.AUTH_SERVICE_TOKEN)
+    @Inject(AUTH_SERVICE_TOKEN)
     private readonly _authServiceClient: ClientProxy
   ) { }
 

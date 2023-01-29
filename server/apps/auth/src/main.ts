@@ -1,8 +1,8 @@
 import { NestFactory } from '@nestjs/core';
 import { TcpOptions, Transport } from '@nestjs/microservices';
 
-import { loadEnvironmentVariables } from '@vps/env';
-import { EnvironmentService } from '@vps/core';
+import { loadEnvironmentVariables } from '@vsp/env';
+import { EnvironmentService } from '@vsp/core';
 
 import { AuthModule } from './auth.module';
 

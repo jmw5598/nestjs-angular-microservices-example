@@ -9,12 +9,16 @@
     "build": "nest build",
     "build:libs": "nest build core && nest build common",
     "build:gateway": "nest build gateway",
+    "build:accounts": "nest build accounts",
     "build:auth": "nest build auth",
     "format": "prettier --write \"apps/**/*.ts\" \"libs/**/*.ts\"",
     "start": "nest start",
     "start:dev": "NODE_ENV=dev nest start gateway --watch",
     "start:debug": "nest start gateway --debug --watch",
     "start:prod": "NODE_ENV=prod node dist/apps/gateway/main",
+    "start:dev:accounts": "NODE_ENV=dev nest start accounts --watch",
+    "start:debug:accounts": "nest start accounts --debug --watch",
+    "start:prod:accounts": "NODE_ENV=prod node dist/apps/accounts/main",
     "start:dev:auth": "NODE_ENV=dev nest start auth --watch",
     "start:debug:auth": "nest start auth --debug --watch",
     "start:prod:auth": "NODE_ENV=prod node dist/apps/auth/main",
@@ -95,8 +99,8 @@
       "<rootDir>/libs/"
     ],
     "moduleNameMapper": {
-      "^@vps/core(|/.*)$": "<rootDir>/libs/core/src/$1",
-      "^@app/common(|/.*)$": "<rootDir>/libs/common/src/$1"
+      "^@vsp/core(|/.*)$": "<rootDir>/libs/core/src/$1",
+      "^@vsp/common(|/.*)$": "<rootDir>/libs/common/src/$1"
     }
   }
 }

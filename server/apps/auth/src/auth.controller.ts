@@ -11,6 +11,6 @@ export class AuthController {
 
   @MessagePattern('')
   public async getAuth(): Promise<any> {
-    return 'GOT AUTH!';
+    return this._authService.getUsers();
   }
 }

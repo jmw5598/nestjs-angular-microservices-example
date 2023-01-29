@@ -17,10 +17,8 @@ export class TypeOrmConfigService implements TypeOrmOptionsFactory {
       username: this._environmentService.get('TYPEORM_USER'),
       password: this._environmentService.get('TYPEORM_PASSWORD'),
       database: this._environmentService.get('TYPEORM_DATABASE'),
-      entities: [
-        // @TODO
-      ],
-      synchronize: this._environmentService.get('TYPEORM_SYNCRONIZE')
+      synchronize: this._environmentService.get('TYPEORM_SYNCRONIZE'),
+      autoLoadEntities: true,
     } as TypeOrmModuleOptions;
   }
 }

@@ -20,7 +20,11 @@ async function bootstrap() {
       'auth/sign-in', 
       'auth/forgot-password', 
       'auth/reset-password', 
-      'auth/refresh-access-token'
+      'auth/refresh-access-token',
+      'accounts/register',
+      'accounts/reset-password',
+      'accounts/confirm-email',
+      'accounts/forgot-password',
     ]
   });
   

@@ -10,7 +10,10 @@ import { GatewayModule } from './gateway.module';
 loadEnvironmentVariables('./environments');
 
 async function bootstrap() {
+  const environmentService: EnvironmentService = new EnvironmentService();
   const app = await NestFactory.create(GatewayModule);
+
+  app.enableCors({ origin: environmentService.get('CORS_ORIGIN') });
   
   app.setGlobalPrefix('api/v1', { 
     exclude: [
@@ -30,7 +33,7 @@ async function bootstrap() {
   const document = SwaggerModule.createDocument(app, options);
   SwaggerModule.setup('api', app, document);
   
-  await app.listen(new EnvironmentService().get('API_GATEWAY_PORT'));
+  await app.listen(environmentService.get('API_GATEWAY_PORT'));
 }
 
 bootstrap();

@@ -1,7 +1,7 @@
-import { BadRequestException, Controller, Get, Inject } from '@nestjs/common';
+import { BadRequestException, Controller, Get, Inject, Post } from '@nestjs/common';
 import { ClientProxy } from '@nestjs/microservices';
 
-import { AUTH_SERVICE_TOKEN } from '@vsp/common';
+import { AUTH_SERVICE_TOKEN, refreshAccessTokenCommand, signInCommand } from '@vsp/common';
 
 @Controller('auth')
 export class AuthController {
@@ -10,10 +10,19 @@ export class AuthController {
     private readonly _authServiceClient: ClientProxy
   ) { }
 
-  @Get()
-  public async getAuth(): Promise<any> {
+  @Post('sign-in')
+  public async signIn(): Promise<any> {
     try {
-      return await this._authServiceClient.send('', { });
+      return await this._authServiceClient.send(signInCommand, { });
+    } catch (error) {
+      throw new BadRequestException("Bad Request!");
+    }
+  }
+
+  @Post('refresh-access-token')
+  public async refreshAccessToken(): Promise<any> {
+    try {
+      return await this._authServiceClient.send(refreshAccessTokenCommand, { });
     } catch (error) {
       throw new BadRequestException("Bad Request!");
     }

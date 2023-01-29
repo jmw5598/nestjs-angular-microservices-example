@@ -12,6 +12,7 @@ export * from './models/message-pattern-command.model';
 
 //Commands
 export * from './commands/accounts.commands';
+export * from './commands/auth.commands';
 
 // Tokens
 export * from './constants/injection-tokens.constants';

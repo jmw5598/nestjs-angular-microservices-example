@@ -1,6 +1,8 @@
 import { Controller } from '@nestjs/common';
 import { MessagePattern } from '@nestjs/microservices';
 
+import { refreshAccessTokenCommand, signInCommand } from '@vsp/common';
+
 import { AuthService } from './auth.service';
 
 @Controller()
@@ -9,8 +11,13 @@ export class AuthController {
     private readonly _authService: AuthService
   ) { }
 
-  @MessagePattern('')
-  public async getAuth(): Promise<any> {
-    return this._authService.getUsers();
+  @MessagePattern(signInCommand)
+  public async signIn(): Promise<any> {
+    return 'Signing In User'
+  }
+
+  @MessagePattern(refreshAccessTokenCommand)
+  public async refreshAccessToken(): Promise<any> {
+    return 'Refreshing Access Token'
   }
 }

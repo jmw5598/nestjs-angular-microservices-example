@@ -12,6 +12,15 @@ loadEnvironmentVariables('./environments');
 async function bootstrap() {
   const app = await NestFactory.create(GatewayModule);
   
+  app.setGlobalPrefix('api/v1', { 
+    exclude: [
+      'auth/sign-in', 
+      'auth/forgot-password', 
+      'auth/reset-password', 
+      'auth/refresh-access-token'
+    ]
+  });
+  
   const options = new DocumentBuilder()
     .setTitle('API Docs')
     .addTag('auth')

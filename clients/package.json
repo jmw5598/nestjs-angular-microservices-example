@@ -3,9 +3,10 @@
   "version": "0.0.0",
   "scripts": {
     "ng": "ng",
-    "start": "ng serve",
-    "start:admin": "ng serve --project admin --port 4200",
+    "start": "ng serve --configuration development",
+    "start:admin": "ng serve --project admin --port 4200 --configuration=development",
     "build": "ng build",
+    "build:libs": "ng build core && ng build datatable && ng build forms && ng build query-search-filters",
     "build:admin": "ng build --project admin",
     "watch": "ng build --watch --configuration development",
     "test": "ng test"
@@ -20,6 +21,10 @@
     "@angular/platform-browser": "^15.1.0",
     "@angular/platform-browser-dynamic": "^15.1.0",
     "@angular/router": "^15.1.0",
+    "@ngrx/effects": "^15.2.1",
+    "@ngrx/store": "^15.2.1",
+    "@ngrx/store-devtools": "^15.2.1",
+    "ng-zorro-antd": "^15.0.3",
     "rxjs": "~7.8.0",
     "tslib": "^2.3.0",
     "zone.js": "~0.12.0"
@@ -35,6 +40,7 @@
     "karma-coverage": "~2.2.0",
     "karma-jasmine": "~5.1.0",
     "karma-jasmine-html-reporter": "~2.0.0",
+    "ng-packagr": "^15.1.0",
     "typescript": "~4.9.4"
   }
 }

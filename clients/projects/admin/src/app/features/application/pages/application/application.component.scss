@@ -1,0 +1,32 @@
+.logo {
+  height: 64px;  
+  background: rgba(255, 255, 255, 0.3);
+}
+
+nz-header {
+  background: #fff;
+  padding: 0;
+}
+
+nz-content {
+  margin: 0 16px;
+  height: calc(100vh - 64px - 70px);
+  overflow-y: auto;
+}
+
+nz-breadcrumb {
+  margin: 16px 0;
+}
+
+.inner-content {
+  padding: 24px;
+  background: #fff;
+}
+
+nz-footer {
+  text-align: center;
+}
+
+.user-dropdown-menu {
+  width: 300px;
+}

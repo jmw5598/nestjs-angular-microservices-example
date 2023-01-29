@@ -1,8 +1,27 @@
-/* To learn more about this file see: https://angular.io/config/tsconfig. */
 {
   "compileOnSave": false,
   "compilerOptions": {
     "baseUrl": "./",
+    "paths": {
+      "@vsp/core": [
+        "dist/@vsp/core"
+      ],
+      "@vsp/datatable": [
+        "dist/@vsp/datatable"
+      ],
+      "@vsp/forms": [
+        "dist/@vsp/forms"
+      ],
+      "@vsp/query-search-filters": [
+        "dist/@vsp/query-search-filters"
+      ],
+      "@vsp/admin/*": [
+        "projects/admin/src/app/*"
+      ],
+      "@vsp/admin/env/*": [
+        "projects/admin/src/environments/*"
+      ]
+    },
     "outDir": "./dist/out-tsc",
     "forceConsistentCasingInFileNames": true,
     "strict": true,

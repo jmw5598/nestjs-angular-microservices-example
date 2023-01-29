@@ -35,6 +35,12 @@
       ],
       "@vsp/common/*": [
         "libs/common/src/*"
+      ],
+      "@vsp/authorization": [
+        "libs/authorization/src"
+      ],
+      "@vsp/authorization/*": [
+        "libs/authorization/src/*"
       ]
     }
   }

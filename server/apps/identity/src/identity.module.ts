@@ -1,13 +1,13 @@
 import { Module } from '@nestjs/common';
 import { TypeOrmModule } from '@nestjs/typeorm';
 
+import { Account, RefreshToken, Role, User } from '@vsp/common';
 import { CoreModule, TypeOrmConfigService } from '@vsp/core';
-import { RefreshToken, Role, User } from '@vsp/common';
 
-import { AuthController } from './auth.controller';
-import { AuthService } from './auth.service';
-
-import { UsersRepository } from './repositories/users-repository.service';
+import { AccountsController } from './controllers/accounts.controller';
+import { AuthController } from './controllers/auth.controller';
+import { AccountsService } from './services/accounts.service';
+import { AuthService } from './services/auth.service';
 
 @Module({
   imports: [
@@ -17,17 +17,19 @@ import { UsersRepository } from './repositories/users-repository.service';
       useClass: TypeOrmConfigService
     }),
     TypeOrmModule.forFeature([
+      Account,
       RefreshToken,
       Role,
       User,
     ])
   ],
   controllers: [
-    AuthController
+    AccountsController,
+    AuthController,
   ],
   providers: [
-    AuthService,
-    UsersRepository
+    AuthService, 
+    AccountsService,
   ],
 })
-export class AuthModule {}
+export class IdentityModule {}

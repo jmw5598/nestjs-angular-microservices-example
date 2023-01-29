@@ -3,7 +3,7 @@ import { MessagePattern } from '@nestjs/microservices';
 
 import { refreshAccessTokenCommand, signInCommand } from '@vsp/common';
 
-import { AuthService } from './auth.service';
+import { AuthService } from '../services/auth.service';
 
 @Controller()
 export class AuthController {

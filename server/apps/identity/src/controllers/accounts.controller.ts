@@ -7,7 +7,7 @@ import {
   registerAccountCommand, 
   resetPasswordCommand } from '@vsp/common';
 
-import { AccountsService } from './accounts.service';
+import { AccountsService } from '../services/accounts.service';
 
 @Controller()
 export class AccountsController {

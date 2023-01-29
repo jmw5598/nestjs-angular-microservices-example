@@ -19,15 +19,6 @@
         "tsConfigPath": "apps/gateway/tsconfig.app.json"
       }
     },
-    "auth": {
-      "type": "application",
-      "root": "apps/auth",
-      "entryFile": "main",
-      "sourceRoot": "apps/auth/src",
-      "compilerOptions": {
-        "tsConfigPath": "apps/auth/tsconfig.app.json"
-      }
-    },
     "core": {
       "type": "library",
       "root": "libs/core",
@@ -46,13 +37,22 @@
         "tsConfigPath": "libs/common/tsconfig.lib.json"
       }
     },
-    "accounts": {
-      "type": "application",
-      "root": "apps/accounts",
-      "entryFile": "main",
-      "sourceRoot": "apps/accounts/src",
+    "authorization": {
+      "type": "library",
+      "root": "libs/authorization",
+      "entryFile": "index",
+      "sourceRoot": "libs/authorization/src",
       "compilerOptions": {
-        "tsConfigPath": "apps/accounts/tsconfig.app.json"
+        "tsConfigPath": "libs/authorization/tsconfig.lib.json"
+      }
+    },
+    "identity": {
+      "type": "application",
+      "root": "apps/identity",
+      "entryFile": "main",
+      "sourceRoot": "apps/identity/src",
+      "compilerOptions": {
+        "tsConfigPath": "apps/identity/tsconfig.app.json"
       }
     }
   }

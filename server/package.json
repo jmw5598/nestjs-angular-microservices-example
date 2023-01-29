@@ -7,21 +7,17 @@
   "license": "UNLICENSED",
   "scripts": {
     "build": "nest build",
-    "build:libs": "nest build core && nest build common",
+    "build:libs": "nest build core && nest build common && nest build authorization",
     "build:gateway": "nest build gateway",
-    "build:accounts": "nest build accounts",
-    "build:auth": "nest build auth",
+    "build:identity": "nest build identity",
     "format": "prettier --write \"apps/**/*.ts\" \"libs/**/*.ts\"",
     "start": "nest start",
     "start:dev": "NODE_ENV=dev nest start gateway --watch",
     "start:debug": "nest start gateway --debug --watch",
     "start:prod": "NODE_ENV=prod node dist/apps/gateway/main",
-    "start:dev:accounts": "NODE_ENV=dev nest start accounts --watch",
-    "start:debug:accounts": "nest start accounts --debug --watch",
-    "start:prod:accounts": "NODE_ENV=prod node dist/apps/accounts/main",
-    "start:dev:auth": "NODE_ENV=dev nest start auth --watch",
-    "start:debug:auth": "nest start auth --debug --watch",
-    "start:prod:auth": "NODE_ENV=prod node dist/apps/auth/main",
+    "start:dev:identity": "NODE_ENV=dev nest start identity --watch",
+    "start:debug:identity": "nest start identity --debug --watch",
+    "start:prod:identity": "NODE_ENV=prod node dist/apps/identity/main",
     "lint": "eslint \"{src,apps,libs,test}/**/*.ts\" --fix",
     "test": "jest",
     "test:watch": "jest --watch",
@@ -44,11 +40,16 @@
   "dependencies": {
     "@nestjs/common": "^9.0.0",
     "@nestjs/core": "^9.0.0",
+    "@nestjs/jwt": "^10.0.1",
     "@nestjs/microservices": "^9.2.1",
+    "@nestjs/passport": "^9.0.0",
     "@nestjs/platform-express": "^9.0.0",
     "@nestjs/swagger": "^6.1.4",
     "@nestjs/typeorm": "^9.0.1",
     "dotenv": "^16.0.3",
+    "passport": "^0.6.0",
+    "passport-jwt": "^4.0.1",
+    "passport-local": "^1.0.0",
     "pg": "^8.9.0",
     "reflect-metadata": "^0.1.13",
     "rxjs": "^7.2.0",
@@ -62,6 +63,8 @@
     "@types/express": "^4.17.13",
     "@types/jest": "29.2.4",
     "@types/node": "18.11.18",
+    "@types/passport-jwt": "^3.0.8",
+    "@types/passport-local": "^1.0.35",
     "@types/supertest": "^2.0.11",
     "@typescript-eslint/eslint-plugin": "^5.0.0",
     "@typescript-eslint/parser": "^5.0.0",
@@ -100,7 +103,8 @@
     ],
     "moduleNameMapper": {
       "^@vsp/core(|/.*)$": "<rootDir>/libs/core/src/$1",
-      "^@vsp/common(|/.*)$": "<rootDir>/libs/common/src/$1"
+      "^@vsp/common(|/.*)$": "<rootDir>/libs/common/src/$1",
+      "^@vsp/authorization(|/.*)$": "<rootDir>/libs/authorization/src/$1"
     }
   }
 }

@@ -2,7 +2,7 @@ import { Module } from '@nestjs/common';
 
 import { CoreModule } from '@vsp/core';
 
-import { accountsMicroserviceProvider, authMicroserviceProvider } from './gateway.providers';
+import { identityMicroserviceProvider } from './gateway.providers';
 import { AuthController } from './controllers/auth.controller';
 import { AccountsController } from './controllers/accounts.controller';
 
@@ -15,8 +15,7 @@ import { AccountsController } from './controllers/accounts.controller';
     AccountsController
   ],
   providers: [
-    accountsMicroserviceProvider,
-    authMicroserviceProvider
+    identityMicroserviceProvider,
   ],
 })
 export class GatewayModule {}

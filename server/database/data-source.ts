@@ -16,6 +16,7 @@ export default new DataSource({
   logging: process.env.TYPEORM_LOGGING,
   namingStrategy: new SnakeNamingStrategy(),
   migrations: ["./database/migrations/*.ts"],
+  migrationsTableName: "_migration_history",
   subscribers: [],
-  entities: ["./libs/common/src/entities/*.entity.ts"]
+  entities: ["./libs/common/src/entities/**/*.entity.ts"]
 } as DataSourceOptions);

@@ -4,14 +4,14 @@ export abstract class BaseEntity {
   @PrimaryGeneratedColumn('uuid')
   public id: string;
 
-  @Column({ type: 'timestamp with time zone' })
+  @Column({ type: 'timestamp with time zone', default: () => 'NOW()' })
   public createdAt: Date;
 
-  @Column({ type: 'timestamp with time zone' })
+  @Column({ type: 'timestamp with time zone', default: () => 'NOW()' })
   public updatedAt: Date;
 
-  @Column({ type: 'timestamp with time zone' })
-  public deletedAt: Date;
+  @Column({ type: 'timestamp with time zone', nullable: true, default: () => 'NULL' })
+  public deletedAt: Date | null | undefined;
 
   @BeforeInsert()
   public beforeInsert() {

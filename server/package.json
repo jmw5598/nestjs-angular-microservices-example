@@ -26,7 +26,7 @@
     "test:e2e": "jest --config ./apps/server/test/jest-e2e.json",
     "typeorm": "ts-node ./node_modules/typeorm/cli.js",
     "typeorm:cli": "ts-node ./node_modules/typeorm/cli",
-    "db:migration:create": "NODE_ENV=dev npm run typeorm:cli -- migration:create -d ./database/data-source.ts",
+    "db:migration:create": "NODE_ENV=dev npm run typeorm:cli -- migration:create",
     "db:migration:generate": "NODE_ENV=dev npm run typeorm:cli -- migration:generate -d ./database/data-source.ts",
     "db:drop": "NODE_ENV=prod npm run typeorm:cli -- schema:drop -d ./database/data-source.ts",
     "db:revert": "NODE_ENV=prod npm run typeorm:cli -- migration:revert -d ./database/data-source.ts",

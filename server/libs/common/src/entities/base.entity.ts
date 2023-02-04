@@ -10,18 +10,18 @@ export abstract class BaseEntity {
   @Column({ type: 'timestamp with time zone', default: () => 'NOW()' })
   public updatedAt: Date;
 
-  @Column({ type: 'timestamp with time zone', nullable: true, default: () => 'NULL' })
+  @Column({ type: 'timestamp with time zone', nullable: true })
   public deletedAt: Date | null | undefined;
 
   @BeforeInsert()
-  public beforeInsert() {
+  public initializeTimestamps() {
     const now: Date = new Date()
     this.createdAt = now;
     this.updatedAt = now;
   }
 
   @BeforeUpdate()
-  public BeforeUpdate() {
+  public updateTimestamps() {
     const now: Date = new Date();
     this.updatedAt = now;
   }

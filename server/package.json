@@ -46,6 +46,7 @@
     "@nestjs/platform-express": "^9.0.0",
     "@nestjs/swagger": "^6.1.4",
     "@nestjs/typeorm": "^9.0.1",
+    "bcrypt": "^5.1.0",
     "dotenv": "^16.0.3",
     "passport": "^0.6.0",
     "passport-jwt": "^4.0.1",
@@ -54,18 +55,21 @@
     "reflect-metadata": "^0.1.13",
     "rxjs": "^7.2.0",
     "typeorm": "^0.3.11",
-    "typeorm-naming-strategies": "^4.1.0"
+    "typeorm-naming-strategies": "^4.1.0",
+    "uuid": "^9.0.0"
   },
   "devDependencies": {
     "@nestjs/cli": "^9.0.0",
     "@nestjs/schematics": "^9.0.0",
     "@nestjs/testing": "^9.0.0",
+    "@types/bcrypt": "^5.0.0",
     "@types/express": "^4.17.13",
     "@types/jest": "29.2.4",
     "@types/node": "18.11.18",
     "@types/passport-jwt": "^3.0.8",
     "@types/passport-local": "^1.0.35",
     "@types/supertest": "^2.0.11",
+    "@types/uuid": "^9.0.0",
     "@typescript-eslint/eslint-plugin": "^5.0.0",
     "@typescript-eslint/parser": "^5.0.0",
     "eslint": "^8.0.1",
@@ -104,7 +108,8 @@
     "moduleNameMapper": {
       "^@vsp/core(|/.*)$": "<rootDir>/libs/core/src/$1",
       "^@vsp/common(|/.*)$": "<rootDir>/libs/common/src/$1",
-      "^@vsp/authorization(|/.*)$": "<rootDir>/libs/authorization/src/$1"
+      "^@vsp/authorization(|/.*)$": "<rootDir>/libs/authorization/src/$1",
+      "^@vsp/logger(|/.*)$": "<rootDir>/libs/logger/src/$1"
     }
   }
 }

@@ -1,7 +1,7 @@
 import { Column, Entity } from "typeorm";
 import { BaseEntity } from "../base.entity";
 
-@Entity()
+@Entity({ name: 'app_claim' })
 export class Claim extends BaseEntity {
   @Column()
   public type: string;

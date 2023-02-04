@@ -15,3 +15,11 @@ export const resetPasswordCommand: MessagePatternCommand<void> = {
 export const confirmEmailCommand: MessagePatternCommand<void> = {
   cmd: 'confirm-email'
 } as MessagePatternCommand<void>;
+
+export const doesUsernameExist: MessagePatternCommand<void> = {
+  cmd: 'does-username-exist'
+} as MessagePatternCommand<void>;
+
+export const doesEmailExist: MessagePatternCommand<void> = {
+  cmd: 'does-email-exist'
+} as MessagePatternCommand<void>;

@@ -3,7 +3,7 @@ import { BaseEntity } from "../base.entity";
 import { Address } from "./address.entity";
 import { User } from "./user.entity";
 
-@Entity()
+@Entity({ name: 'app_profile' })
 export class Profile extends BaseEntity {
   @Column()
   public firstName: string;
@@ -11,20 +11,19 @@ export class Profile extends BaseEntity {
   @Column()
   public lastName: string;
 
-  @Column()
-  public email: string;
+  @Column({ nullable: true })
+  public summary: string;
 
-  @OneToOne(type => Address, address => address.profile, { nullable: false })
-  @JoinColumn({ name: 'address_id' })
-  public address: Address;
+  @Column({ nullable: true })
+  public avatarUrl: string;
 
-  @Column({ name: 'address_id' })
+  @Column({ name: 'app_address_id' })
   public addressId: string;
 
-  @OneToOne(type => User, user => user.profile, { nullable: false })
-  @JoinColumn({ name: 'app_user_id' })
-  public user: User;
+  @OneToOne(type => Address, address => address.profile, { nullable: false, cascade: ['insert', 'update'] })
+  @JoinColumn({ name: 'app_address_id' })
+  public address: Address;
 
-  @Column({ name: 'app_user_id' })
-  public userId: string;
+  @OneToOne(type => User, user => user.profile)
+  public user: User;
 }

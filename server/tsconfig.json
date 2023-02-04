@@ -41,6 +41,12 @@
       ],
       "@vsp/authorization/*": [
         "libs/authorization/src/*"
+      ],
+      "@vsp/logger": [
+        "libs/logger/src"
+      ],
+      "@vsp/logger/*": [
+        "libs/logger/src/*"
       ]
     }
   }

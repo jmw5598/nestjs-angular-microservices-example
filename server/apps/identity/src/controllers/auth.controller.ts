@@ -1,19 +1,14 @@
-import { Controller, HttpException, HttpStatus, Inject } from '@nestjs/common';
+import { Controller, Inject } from '@nestjs/common';
 import { MessagePattern } from '@nestjs/microservices';
 
 import { LoggerService } from '@vsp/logger';
 import { 
-  ApiResponse,
-  AuthenticatedUser,
   Credentials,
-  refreshTokenCommand, 
   signInCommand, 
-  TokenPair, 
   UserDetails, 
   validateUserCommand } from '@vsp/common';
 
 import { AUTH_SERVICE_TOKEN, IAuthService } from '../interfaces/auth-service.interface';
-import { HttpErrorByCode } from '@nestjs/common/utils/http-error-by-code.util';
 
 @Controller()
 export class AuthController {
@@ -42,17 +37,6 @@ export class AuthController {
       return await this._authService.signIn(user);
     } catch (error) {
       this._logger.error('Error signing in user', error);
-      throw error;
-    }
-  }
-
-  @MessagePattern(refreshTokenCommand)
-  public async refreshAccessToken(tokens: TokenPair): Promise<any> {
-    try {
-      return await this._authService.refreshToken(tokens);
-    } catch (error) {
-      console.log("exception ", error);
-      this._logger.error('Error refreshing access token', error);
       throw error;
     }
   }

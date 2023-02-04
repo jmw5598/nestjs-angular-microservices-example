@@ -10,11 +10,10 @@ import { Request } from 'express';
 
 @Injectable()
 export class LocalStrategy extends PassportStrategy(Strategy) {
-  constructor(
-    private readonly _logger: LoggerService,
-    @Inject(IDENTITY_SERVICE_TOKEN)
-    private readonly _identityServiceClient: ClientProxy
-  ) {
+  @Inject(IDENTITY_SERVICE_TOKEN)
+  private readonly _identityServiceClient: ClientProxy;
+  
+  constructor(private readonly _logger: LoggerService) {
     /*
       @Note
       You can pass options to super to customerize passports local strategy such

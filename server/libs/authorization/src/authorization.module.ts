@@ -17,6 +17,10 @@ import { LocalAuthGuard } from './guards/local-auth.guard';
           privateKey: environmentService.get('IDENTITY_JWT_PRIVATE_KEY'),
           signOptions: {
             expiresIn: environmentService.get('IDENTITY_JWT_EXPIRES_IN')
+          },
+          verifyOptions: {
+            // Other validation options such as issuer
+            ignoreExpiration: environmentService.get('IDENTITY_JWT_IGNORE_EXPIRATION') === 'true'
           }
         } as JwtModuleOptions
       },

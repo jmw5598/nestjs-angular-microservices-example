@@ -63,7 +63,6 @@ export class AccountsController {
   @Head('usernames')
   @HttpCode(HttpStatus.NO_CONTENT)
   public doesUsernameExist(@Query('query') username: string): Observable<any> {
-    console.log("hit endpoint", username);
     return this._identityServiceClient
       .send(doesUsernameExist, new SimpleQueryRequestDto({ query: username }))
       .pipe(catchError(error => throwError(() => new RpcException(error.response))));

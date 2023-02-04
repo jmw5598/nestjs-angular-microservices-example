@@ -12,16 +12,7 @@ import { RpcExceptionFilter } from './filters/rpc-exception.filter';
 loadEnvironmentVariables('./environments');
 
 const routesToExcludeFromGlobalRoutePrefix: string[] = [
-  'auth/sign-in', 
-  'auth/forgot-password', 
-  'auth/reset-password', 
-  'auth/refresh-token',
-  'accounts/register',
-  'accounts/reset-password',
-  'accounts/confirm-email',
-  'accounts/forgot-password',
-  'accounts/emails',
-  'accounts/usernames',
+  
 ];
 
 const globalValidationPipeOptions: ValidationPipeOptions = {

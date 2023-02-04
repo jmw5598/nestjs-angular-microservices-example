@@ -10,7 +10,7 @@ export const environment = {
     domain: 'localhost',
     port: '5000',
     apiSlug: 'api/v1',
-    authSlug: 'auth'
+    authSlug: 'api/v1/auth'
   },
   recaptcha: {
     siteKey: '6LfGLB0iAAAAACKHwA_U6JQMtD0vYbP_P1PDjIwb'

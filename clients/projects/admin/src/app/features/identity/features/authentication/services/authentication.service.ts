@@ -29,7 +29,8 @@ export class AuthenticationService {
   public signInUser(credentials: Credentials): Observable<AuthenticatedUser> {
     return this._http.post<AuthenticatedUser>(
       `${this._environmentService.getBaseAuthUrl()}/sign-in`, 
-      credentials
+      credentials,
+      { context: new HttpContext().set(REQUIRES_AUTHENTICATION, false) }
     );
   }
 

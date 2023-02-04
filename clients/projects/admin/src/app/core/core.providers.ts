@@ -4,7 +4,20 @@ import { HTTP_INTERCEPTORS } from '@angular/common/http';
 import { Store } from '@ngrx/store';
 import { en_US, NZ_I18N } from 'ng-zorro-antd/i18n';
 import { IconDefinition } from '@ant-design/icons-angular';
-import { MailOutline, LockOutline, UserOutline } from '@ant-design/icons-angular/icons';
+
+import { 
+  ArrowLeftOutline,
+  ArrowRightOutline,
+  DashboardOutline,
+  FolderViewOutline,
+  IdcardOutline, 
+  MailOutline,
+  MenuFoldOutline,
+  MenuUnfoldOutline,
+  LockOutline,
+  SettingOutline,
+  TeamOutline, 
+  UserOutline } from '@ant-design/icons-angular/icons';
 
 import { CACHE_SERVICE, SessionCacheService } from '@vsp/core';
 
@@ -41,8 +54,17 @@ export const nzI18NProvider = {
 }
 
 export const nzGlobalIcons: IconDefinition[] = [
-  MailOutline,
+  ArrowLeftOutline,
+  ArrowRightOutline,
+  DashboardOutline,
+  FolderViewOutline,
+  IdcardOutline, 
+  MailOutline, 
+  MenuFoldOutline,
+  MenuUnfoldOutline,
   LockOutline,
+  SettingOutline,
+  TeamOutline, 
   UserOutline
 ]; 
 

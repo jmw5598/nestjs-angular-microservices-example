@@ -36,21 +36,24 @@ export class SigningInComponent implements OnInit {
   }
 
   private _dispatchActionsForUserSettingsAndPermissions(): void {
-    this._store.dispatch(UserActions.getUserPermissionsRequest());
-    this._store.dispatch(UserActions.getUserSettingsRequest());
+    // this._store.dispatch(UserActions.getUserPermissionsRequest());
+    // this._store.dispatch(UserActions.getUserSettingsRequest());
   }
 
   private _listenForUserSettingsAndPermissionsResolution(): void {
-    combineLatest([
-      this._store.select(UserSelectors.selectUserSettings),
-      this._store.select(UserSelectors.selectUserModulePermissionsMap)
-    ])
-    .pipe(
-      filter(([settings, permissions]) => !!settings && !!permissions),
-      take(1)
-    )
-    .subscribe(([settings, permissions]) => {
-      this._router.navigateByUrl('/app/dashboard')
-    });
+    // @TEMP - Disable getting permissins until backend is done
+    setTimeout(() => this._router.navigateByUrl('/app/dashboard'), 2000);
+
+    // combineLatest([
+    //   this._store.select(UserSelectors.selectUserSettings),
+    //   this._store.select(UserSelectors.selectUserModulePermissionsMap)
+    // ])
+    // .pipe(
+    //   filter(([settings, permissions]) => !!settings && !!permissions),
+    //   take(1)
+    // )
+    // .subscribe(([settings, permissions]) => {
+    //   this._router.navigateByUrl('/app/dashboard')
+    // });
   }
 }

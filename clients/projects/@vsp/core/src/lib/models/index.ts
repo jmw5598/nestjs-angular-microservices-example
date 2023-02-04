@@ -55,6 +55,7 @@ export * from './authentication/refresh-token-request.model';
 export * from './authentication/registration-profile.model';
 export * from './authentication/registration-user.model';
 export * from './authentication/reset-password.model';
+export * from './authentication/token-pair.model';
 
 // User
 export * from './user/user-account.model';

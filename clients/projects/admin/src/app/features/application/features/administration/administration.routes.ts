@@ -11,19 +11,11 @@ export const administrationRoutes: Routes = [
   {
     path: 'settings',
     canActivate: [HasPermissionGuard],
-    data: {
-      requiredPermissionName: PermissionNames.SETTINGS
-    },
-    providers: [],
     loadChildren: () => 
       import('./features/settings/settings.routes').then(r => r.settingRoutes)
   },
   {
     path: 'user-accounts',
-    canActivate: [HasPermissionGuard],
-    data: {
-      requiredPermissionName: PermissionNames.USER_ACCOUNTS
-    },
     providers: [
       provideState(userAccountsFeature),
       provideEffects(UserAccountsEffects),

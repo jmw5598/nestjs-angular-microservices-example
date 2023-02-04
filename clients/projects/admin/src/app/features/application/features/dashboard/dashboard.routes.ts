@@ -6,10 +6,6 @@ import { PermissionNames } from '@vsp/core';
 export const dashboardRoutes: Routes = [
   {
     path: 'overview',
-    canActivate: [HasPermissionGuard],
-    data: {
-      requiredPermissionName: PermissionNames.DASHBOARD_OVERVIEW
-    },
     loadComponent: () => 
       import('./pages/dashboard/dashboard.component')
         .then(c => c.DashboardComponent)

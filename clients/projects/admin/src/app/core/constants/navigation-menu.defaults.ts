@@ -1,1 +1,1 @@
-export const isCollapsedByDefault: boolean = false;
+export const isCollapsedByDefault: boolean = true;

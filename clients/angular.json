@@ -253,7 +253,7 @@
         "test": {
           "builder": "@angular-devkit/build-angular:karma",
           "options": {
-            "tsConfig": "projects/query-search-filters/tsconfig.spec.json",
+            "tsConfig": "projects/@vsp/query-search-filters/tsconfig.spec.json",
             "polyfills": [
               "zone.js",
               "zone.js/testing"

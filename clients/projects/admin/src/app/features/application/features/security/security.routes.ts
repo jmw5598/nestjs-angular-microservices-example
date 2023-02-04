@@ -10,10 +10,6 @@ import { securityPermissionsFeature, SecurityPermissionsEffects } from './featur
 export const securityRoutes: Routes = [
   {
     path: 'general',
-    canActivate: [HasPermissionGuard],
-    data: {
-      requiredPermissionName: PermissionNames.SECURITY_GENERAL
-    },
     providers: [],
     loadChildren: () => 
       import('./features/security-general/security-general.routes')
@@ -21,10 +17,6 @@ export const securityRoutes: Routes = [
   },
   {
     path: 'permissions',
-    canActivate: [HasPermissionGuard],
-    data: {
-      requiredPermissionName: PermissionNames.SECURITY_PERMISSIONS
-    },
     providers: [
       provideState(securityPermissionsFeature),
       provideEffects(SecurityPermissionsEffects)

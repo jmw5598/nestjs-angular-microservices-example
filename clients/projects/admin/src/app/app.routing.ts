@@ -11,8 +11,8 @@ export const appRoutes: Routes = [
     path: 'app',
     canActivate: [
       AuthenticatedGuard,
-      UserSettingsLoadedGuard,
-      UserModulePermissionsLoadedGuard,
+      // UserSettingsLoadedGuard,
+      // UserModulePermissionsLoadedGuard,
     ],
     loadChildren: () => 
         import('./features/application/application.routes').then(r => r.applicationRoutes)

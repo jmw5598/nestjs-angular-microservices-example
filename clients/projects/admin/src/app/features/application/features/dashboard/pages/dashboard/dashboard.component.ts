@@ -1,12 +1,13 @@
 import { Component, ChangeDetectionStrategy } from '@angular/core';
 
+import { NzDividerModule } from 'ng-zorro-antd/divider';
+import { NzCardModule } from 'ng-zorro-antd/card';
 import { NzPageHeaderModule } from 'ng-zorro-antd/page-header';
 import { NzBreadCrumbModule } from 'ng-zorro-antd/breadcrumb';
+import { NzTypographyModule } from 'ng-zorro-antd/typography';
 
-import { TableDefinition } from '@vsp/datatable';
 import { fadeAnimation } from '@vsp/core';
-
-import { defaultCasesTableDefinition } from '../../constants/cases-table-definition.defaults';
+import { NzButtonModule } from 'ng-zorro-antd/button';
 
 @Component({
   selector: 'vsp-dashboard',
@@ -17,7 +18,11 @@ import { defaultCasesTableDefinition } from '../../constants/cases-table-definit
   standalone: true,
   imports: [
     NzBreadCrumbModule,
+    NzButtonModule,
+    NzCardModule,
+    NzDividerModule,
     NzPageHeaderModule,
+    NzTypographyModule
   ]
 })
 export class DashboardComponent { }

@@ -19,7 +19,6 @@ import { fadeAnimation, UserSettings, UserModulesAndPermissionsMap } from '@vsp/
 import { defaultNavigationMenu } from '../../constants/navigation-menu.defaults';
 import { NavigationMenuService } from '../../services/navigation-menu.service';
 
-import { RootState } from '@vsp/admin/store';
 import { UserSelectors } from '@vsp/admin/store/user';
 
 @Component({
@@ -36,8 +35,8 @@ import { UserSelectors } from '@vsp/admin/store/user';
     NzLayoutModule,
     NzBreadCrumbModule,
     NzGridModule,
-    NzMenuModule,
     NzIconModule,
+    NzMenuModule,
     NzDropDownModule,
     NzAvatarModule,
     VspHasModulePermissionPipe,

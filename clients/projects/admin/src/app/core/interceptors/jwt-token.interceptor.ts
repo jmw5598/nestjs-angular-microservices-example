@@ -4,7 +4,7 @@ import { Router } from '@angular/router';
 import { catchError, Observable, BehaviorSubject, Subscription, throwError, switchMap, filter, take, skip, combineLatest } from 'rxjs';
 import { Store } from '@ngrx/store';
 
-import { AuthenticatedUser, AuthenticatedStatus } from '../models';
+import { AuthenticatedUser, AuthenticatedStatus } from '@vsp/core';
 import { REQUIRES_AUTHENTICATION } from './context-tokens/requires-authentication.token';
 
 import { AuthenticationActions, AuthenticationSelectors } from '@vsp/admin/features/identity/features/authentication/store';
@@ -29,7 +29,7 @@ export class JwtTokenInterceptor implements HttpInterceptor, OnDestroy {
     }
 
     if (this._authenticatedUser?.status === AuthenticatedStatus.AUTHENTICATED) {
-      const accessToken: string | undefined = this._authenticatedUser?.accessToken;
+      const accessToken: string | undefined = this._authenticatedUser?.tokens?.accessToken;
       request = this._addAuthorizationHeader(request, accessToken || '');
     }
     
@@ -51,8 +51,8 @@ export class JwtTokenInterceptor implements HttpInterceptor, OnDestroy {
 
       this._store.dispatch(AuthenticationActions.refreshAccessTokenRequest({
         refreshTokenRequest: {
-          accessToken: this._authenticatedUser?.accessToken || '',
-          refreshToken: this._authenticatedUser?.refreshToken || ''
+          accessToken: this._authenticatedUser?.tokens?.accessToken || '',
+          refreshToken: this._authenticatedUser?.tokens?.refreshToken || ''
         }
       }));
       
@@ -64,7 +64,7 @@ export class JwtTokenInterceptor implements HttpInterceptor, OnDestroy {
         switchMap(([authenticatedUser, message]) => {
           if (!message) {
             this._handleRefreshAccessTokenSuccess(authenticatedUser);
-            return next.handle(this._addAuthorizationHeader(request, authenticatedUser?.accessToken || ''));
+            return next.handle(this._addAuthorizationHeader(request, authenticatedUser?.tokens?.accessToken || ''));
           } else {
             this._handleRefreshAccessTokenFailure();
             return throwError(() => new Error(message?.message));
@@ -85,7 +85,7 @@ export class JwtTokenInterceptor implements HttpInterceptor, OnDestroy {
 
   private _handleRefreshAccessTokenSuccess(authenticatedUser: AuthenticatedUser | null): void {
     this._isRefreshing = false;
-    this._refreshTokenSubject.next(authenticatedUser?.accessToken);
+    this._refreshTokenSubject.next(authenticatedUser?.tokens?.accessToken);
   }
 
   private _handleRefreshAccessTokenFailure(): void {

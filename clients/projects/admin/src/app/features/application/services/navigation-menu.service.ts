@@ -2,12 +2,13 @@ import { Injectable } from '@angular/core';
 import { BehaviorSubject, Observable } from 'rxjs';
 
 import { isCollapsedByDefault } from '@vsp/admin/core/constants';
+import { compose } from '@ngrx/store';
 
 @Injectable({
   providedIn: 'root'
 })
 export class NavigationMenuService {
-  private _isCollapsed: boolean = isCollapsedByDefault;
+  private _isCollapsed: boolean = true;
   private _isCollapsedSource: BehaviorSubject<boolean> = new BehaviorSubject<boolean>(this._isCollapsed);
 
   public isCollapsed(): Observable<boolean> {
@@ -15,6 +16,7 @@ export class NavigationMenuService {
   }
 
   public toggleMenu(): void {
+    // console.log(" collapsed");
     this._isCollapsed = !this._isCollapsed;
     this._isCollapsedSource.next(this._isCollapsed);
   }

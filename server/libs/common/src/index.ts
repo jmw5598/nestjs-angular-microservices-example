@@ -17,6 +17,7 @@ export * from './dtos/api/simple-query-request.dto';
 export * from './dtos/api/simple-exist-query-response.dto';
 export * from './dtos/identity/account.dto';
 export * from './dtos/identity/address.dto';
+export * from './dtos/identity/claim.dto';
 export * from './dtos/identity/confirm-email.dto';
 export * from './dtos/identity/create-account.dto';
 export * from './dtos/identity/create-address.dto';
@@ -27,6 +28,7 @@ export * from './dtos/identity/profile.dto';
 export * from './dtos/identity/refresh-token-request.dto';
 export * from './dtos/identity/registration.dto';
 export * from './dtos/identity/reset-password.dto';
+export * from './dtos/identity/role.dto';
 export * from './dtos/identity/tenant.dto';
 export * from './dtos/identity/user.dto';
 
@@ -45,6 +47,7 @@ export * from './entities/identity/user.entity';
 
 // Enums
 export * from './enums/role-types.enum';
+export * from './enums/claim-keys.enum';
 
 // Interfaces
 export * from './interfaces/repository.interface';
@@ -63,5 +66,9 @@ export * from './repositories/base.repository';
 // Tokens
 export * from './constants/injection-tokens.constants';
 
+// Types
+export * from './types/claims.type';
+
 // Utils
 export * from './utils/hashing.utils';
+export * from './utils/claims.utils';

@@ -1,5 +1,13 @@
 import { Inject, Injectable } from '@nestjs/common';
-import { AuthenticatedStatus, AuthenticatedUser, Credentials, TokenPair, UserDetails } from '@vsp/common';
+
+import { 
+  AuthenticatedStatus, 
+  AuthenticatedUser, 
+  Claims, 
+  claimsFromUserDetails, 
+  Credentials, 
+  TokenPair, 
+  UserDetails } from '@vsp/common';
 
 import { LoggerService } from '@vsp/logger';
 
@@ -30,9 +38,10 @@ export class AuthService implements IAuthService {
 
   public async signIn(user: UserDetails): Promise<AuthenticatedUser> {
     try {
+      const claimsPayload: Claims = claimsFromUserDetails(user) || {};
       return new AuthenticatedUser({
         status: AuthenticatedStatus.AUTHENTICATED,
-        tokens: await this._tokensService.signToken(user)
+        tokens: await this._tokensService.signToken(claimsPayload)
       });
     } catch (error) {
       this._logger.error('Error signing in user', error);

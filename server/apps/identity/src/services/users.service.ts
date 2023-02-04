@@ -43,7 +43,7 @@ export class UsersService implements IUsersService {
       // that isn't locked out and whose tenant isnt locked out.
       const user: User | null = await this._usersRepository
         .findByCondition({ 
-          relations: ['roles', 'profile'], 
+          relations: ['roles', 'profile', 'tenant', 'tenant.account'], 
           where: { 
             username: credentials.username,
             isEmailConfirmed: true,
@@ -76,8 +76,12 @@ export class UsersService implements IUsersService {
         username: user?.username || 'unknown',
         email: user?.email || 'unknown',
         firstName: user?.profile?.firstName || 'unknown',
-        lastName: user?.profile?.lastName || 'unknown'
-      });
+        lastName: user?.profile?.lastName || 'unknown',
+        tenantId: user?.tenant?.identifier || 'unknown',
+        accountId: user?.tenant?.account?.identifier || 'unknown',
+        roles: user.roles?.map(role => role.name) || [],
+        claims: []
+      } satisfies UserDetails);
     } catch (error) {
       this._logger.error('Error validating user', error);
       throw error;

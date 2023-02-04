@@ -2,13 +2,14 @@ import { Inject, Injectable, UnauthorizedException } from '@nestjs/common';
 import { JwtService } from '@nestjs/jwt';
 import { RpcException } from '@nestjs/microservices';
 
-import { RefreshToken, TokenPair, UserDetails } from '@vsp/common';
+import { Claims, RefreshToken, TokenPair } from '@vsp/common';
 import { LoggerService } from '@vsp/logger';
 import { IRefreshTokensRepository, REFRESH_TOKENS_REPOSITORY_TOKEN } from '../interfaces/refresh-token-repository.interface';
 
 import { ITokensService } from '../interfaces/tokens-service.interface';
 
 import { v4 as uuid } from 'uuid';
+import { ClaimKeys } from '@vsp/common/enums/claim-keys.enum';
 
 
 @Injectable()
@@ -23,13 +24,13 @@ export class TokensService implements ITokensService {
     this._logger.setContext(TokensService.name);
   }
 
-  public async signToken(user: UserDetails): Promise<TokenPair> {
+  public async signToken(claims: Claims): Promise<TokenPair> {
     try {
       // Check for exsting token that isn't blacklisted
       let existingRefreshToken: RefreshToken | null = await this._refreshTokensRepository
         .findByCondition({
           relations: ['user'],
-          where: { isBlacklisted: false, user: { id: user.id } }
+          where: { isBlacklisted: false, user: { id: claims[ClaimKeys.SUBJECT] } }
         });
 
       // If existing refresh token doesnt exist create a new one.
@@ -37,13 +38,13 @@ export class TokensService implements ITokensService {
         existingRefreshToken = await this._refreshTokensRepository.save(
           this._refreshTokensRepository.create({ 
             refreshToken:  uuid(), 
-            user: { id : user.id } 
+            user: { id : claims[ClaimKeys.SUBJECT] } 
           })
         );
       }
 
       return new TokenPair({
-        accessToken: this._jwtService.sign({ ...user }),
+        accessToken: this._jwtService.sign({ ...claims }),
         refreshToken: existingRefreshToken.refreshToken
       });
     } catch (error) {

@@ -7,10 +7,12 @@ import { LoggerModule } from '@vsp/logger';
 
 import { AuthController } from './controllers/auth.controller';
 import { AccountsController } from './controllers/accounts.controller';
-import { identityMicroserviceProvider } from './gateway.providers';
+import { customersMicroserviceProvider, identityMicroserviceProvider, paymentsMicroserviceProvider } from './gateway.providers';
 import { LocalStrategy } from './strategies/local.strategy';
 
 import { JwtStrategy } from './strategies/jwt.strategy';
+import { PaymentsController } from './controllers/payments.controller';
+import { CustomersController } from './controllers/customers.controller';
 
 
 @Module({
@@ -22,10 +24,14 @@ import { JwtStrategy } from './strategies/jwt.strategy';
   ],
   controllers: [
     AuthController,
-    AccountsController
+    AccountsController,
+    PaymentsController,
+    CustomersController
   ],
   providers: [
     identityMicroserviceProvider,
+    customersMicroserviceProvider,
+    paymentsMicroserviceProvider,
     JwtStrategy,
     LocalStrategy,
   ],

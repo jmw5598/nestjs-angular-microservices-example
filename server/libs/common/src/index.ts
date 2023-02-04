@@ -3,6 +3,8 @@ export * from './common.module';
 // Commands
 export * from './commands/accounts.commands';
 export * from './commands/auth.commands';
+export * from './commands/customers.commands';
+export * from './commands/payments.commands';
 
 // Constants
 export * from './constants/client-identifiers.constants';

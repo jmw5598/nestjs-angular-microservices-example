@@ -47,7 +47,7 @@ export class AccountsController {
       return result;
     } catch (error) {
       this._logger.error('Error registering account', error);
-      return error;
+      throw error;
     }
     
   }
@@ -58,7 +58,7 @@ export class AccountsController {
       return await this._usersService.forgotPassword(forgotPassword);
     } catch (error) {
       this._logger.error('Error requesting password reset', error);
-      return error;
+      throw error;
     }
   }
 
@@ -68,7 +68,7 @@ export class AccountsController {
       return await this._usersService.resetPassword(resetPassword);
     } catch (error) {
       this._logger.error('Error resetting password', error);
-      return error;
+      throw error;
     }
   }
 

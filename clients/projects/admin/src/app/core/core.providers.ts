@@ -15,8 +15,10 @@ import {
   MenuFoldOutline,
   MenuUnfoldOutline,
   LockOutline,
+  PoweroffOutline,
   SettingOutline,
-  TeamOutline, 
+  TeamOutline,
+  UnlockOutline, 
   UserOutline } from '@ant-design/icons-angular/icons';
 
 import { CACHE_SERVICE, SessionCacheService } from '@vsp/core';
@@ -63,8 +65,10 @@ export const nzGlobalIcons: IconDefinition[] = [
   MenuFoldOutline,
   MenuUnfoldOutline,
   LockOutline,
+  PoweroffOutline,
   SettingOutline,
   TeamOutline, 
+  UnlockOutline,
   UserOutline
 ]; 
 

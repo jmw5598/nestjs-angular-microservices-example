@@ -1,3 +1,4 @@
+import { IsNotEmpty } from 'class-validator';
 import { BaseDto } from '../base.dto';
 import { ProfileDto } from './profile.dto';
 import { TenantDto } from './tenant.dto';

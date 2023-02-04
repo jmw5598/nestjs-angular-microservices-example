@@ -1,30 +1,42 @@
-import { BadRequestException, Controller, Get, Inject, Post } from '@nestjs/common';
-import { ClientProxy } from '@nestjs/microservices';
+import { Body, Controller, HttpCode, HttpStatus, Inject, Post, Request, UseGuards } from '@nestjs/common';
+import { ClientProxy, RpcException } from '@nestjs/microservices';
+import { catchError, Observable, throwError } from 'rxjs';
 
-import { IDENTITY_SERVICE_TOKEN, refreshAccessTokenCommand, signInCommand } from '@vsp/common';
+import { LoggerService } from '@vsp/logger';
+import { LocalAuthGuard } from '@vsp/authorization';
+
+import { 
+  AuthenticatedUser, 
+  IDENTITY_SERVICE_TOKEN, 
+  refreshTokenCommand,
+  signInCommand, 
+  TokenPair, 
+  UserDetails } from '@vsp/common';
 
 @Controller('auth')
 export class AuthController {
-  constructor(
-    @Inject(IDENTITY_SERVICE_TOKEN)
-    private readonly _identityServiceClient: ClientProxy
-  ) { }
+  @Inject(IDENTITY_SERVICE_TOKEN)
+  private readonly _identityServiceClient: ClientProxy;
 
-  @Post('sign-in')
-  public async signIn(): Promise<any> {
-    try {
-      return await this._identityServiceClient.send(signInCommand, { });
-    } catch (error) {
-      throw new BadRequestException("Bad Request!");
-    }
+  constructor(private readonly _logger: LoggerService) {
+    this._logger.setContext(AuthController.name);
   }
 
-  @Post('refresh-access-token')
-  public async refreshAccessToken(): Promise<any> {
-    try {
-      return await this._identityServiceClient.send(refreshAccessTokenCommand, { });
-    } catch (error) {
-      throw new BadRequestException("Bad Request!");
-    }
+  @UseGuards(LocalAuthGuard)
+  @Post('sign-in')
+  @HttpCode(HttpStatus.OK)
+  public signIn(@Request() req: any): Observable<AuthenticatedUser> {
+    const user: UserDetails = new UserDetails({ ...req.user });
+    return this._identityServiceClient
+      .send(signInCommand, user)
+      .pipe(catchError(error => throwError(() => new RpcException(error.response))))
+  }
+
+  @Post('refresh-token')
+  @HttpCode(HttpStatus.OK)
+  public refreshToken(@Body() tokens: TokenPair): Observable<any> {
+    return this._identityServiceClient
+      .send(refreshTokenCommand, tokens)
+      .pipe(catchError(error => throwError(() => new RpcException(error.response))))
   }
 }
